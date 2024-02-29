@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 sudo yum install ansible -y
 if [ $? -ne 0 ];
 then
