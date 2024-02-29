@@ -5,7 +5,7 @@
 
   - name: COPYING YUM REPO'S
     ansible.builtin.copy:
-      src: /home/centos/JENKINS-INSTALLATION/jenkins.repo
+      src: /tmp/JENKINS-INSTALLATION/jenkins.repo
       dest: /etc/yum.repos.d/jenkins.repo
       remote_src: yes
 

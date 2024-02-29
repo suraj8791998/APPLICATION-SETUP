@@ -2,7 +2,7 @@
 
 set -e
 
-sudo dnf install ansible-core --allowerasing
+sudo dnf install ansible-core --allowerasing -y
 
 
 if [ $? -ne 0 ];
