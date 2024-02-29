@@ -25,6 +25,7 @@
       name:
         - fontconfig
         - java-17-openjdk
+        - jenkins
       state: present
 
   - name: DEAMON-RELOADING SERVICE
