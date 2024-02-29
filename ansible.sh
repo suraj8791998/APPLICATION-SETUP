@@ -1,15 +1,16 @@
 #!/bin/bash
 
 sudo yum install ansible -y
-if [ $? -ne 0];
+if [ $? -ne 0 ];
 then
     echo "INSTALLATION ANSIBLE IS SUCCES"
 else
     echo "INSTALLATION ANSIBLE IS FAILURE"
 fi 
-sudo dnf install ansible-core -y
+sudo dnf install ansible-core --allowerasing
 
-if [ $? -ne 0];
+
+if [ $? -ne 0 ];
 then
     echo "INSTALLATION ANSIBLE CORE IS SUCCES"
 else
