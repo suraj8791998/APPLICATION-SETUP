@@ -1,6 +1,7 @@
 #!/bin/bash
 
 sudo yum install ansible -y
+sudo dnf install ansible-core -y
 
 
 mkdir /ansible

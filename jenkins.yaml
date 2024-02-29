@@ -7,17 +7,18 @@
     ansible.builtin.copy:
       src: /home/centos/JENKINS-INSTALLATION/jenkins.repo
       dest: /etc/yum.repos.d/jenkins.repo
+      remote_src: yes
 
   - name: IMPORTING RPM KEY
     ansible.builtin.rpm_key:
       state: present
       key: https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
-      remote_src: yes
+    
 
-  - name: UPDATING THE APPLICATION
-    ansible.builtin.yum:
-      name: '*'
-      state: latest
+  # - name: UPDATING THE APPLICATION
+  #   ansible.builtin.yum:
+  #     name: '*'
+  #     state: latest
 
   - name: INSTALLING THE PACKAGES
     ansible.builtin.yum:
