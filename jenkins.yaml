@@ -1,0 +1,37 @@
+- name: INSTALL JENKINS USING PLAYBOOK
+  hosts: localhost
+  become: yes
+  tasks:
+
+  - name: COPYING YUM REPO'S
+    ansible.builtin.copy:
+      src: /home/centos/jenkins.repo
+      dest: /etc/yum.repos.d/jenkins.repo
+
+  - name: IMPORTING RPM KEY
+    ansible.builtin.rpm_key:
+      state: present
+      key: https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
+
+  - name: UPDATING THE APPLICATION
+    ansible.builtin.yum:
+      name: '*'
+      state: latest
+
+  - name: INSTALLING THE PACKAGES
+    ansible.builtin.yum:
+      name: "{{ item }}"
+      state: present
+    loop:
+      - fontconfig java-17-openjdk
+      - jenkins
+
+  - name: DEAMON-RELOADING SERVICE
+    ansible.builtin.systemd_service:
+      state: restarted
+      daemon_reload: true
+      name: jenkins
+
+
+
+
