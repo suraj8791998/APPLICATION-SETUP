@@ -58,3 +58,11 @@ variable "common_tags" {
     project = "roboshop"
   }
 }
+
+variable "instance" {
+  default = {
+    Jenkins = "t3.medium"
+    Node = "t2.micro"
+  }
+}
+

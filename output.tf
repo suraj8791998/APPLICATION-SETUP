@@ -7,5 +7,8 @@ output "sg_id" {
 }
 
 output "public_ip" {
-  value = aws_instance.ec2_creation.public_ip
+  value = values(aws_instance.jenkins_server)[*].public_ip
 }
+
+
+

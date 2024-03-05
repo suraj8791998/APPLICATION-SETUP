@@ -41,6 +41,18 @@
      name: jenkins
      enabled: yes
 
+- name: SETTING UP AGENT NODE
+  hosts: node
+  become: yes
+  tasks:
+
+  - name: INSTALLING JAVA APPLICATION
+    ansible.builtin.yum:
+      name:
+      - fontconfig 
+      - java-17-openjdk
+      state: present
+    
 
 
 

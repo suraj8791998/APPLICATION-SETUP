@@ -36,16 +36,18 @@ egress {
 
 }
 
-resource "aws_instance" "ec2_creation" {
+resource "aws_instance" "jenkins_server" {
+  for_each = var.instance
   ami           = data.aws_ami.ami_id.id
-  instance_type = "t3.micro"
+  instance_type = each.key == "Jenkins" ? "t3.medium" : "t2.micro"
   vpc_security_group_ids = [aws_security_group.jenkins.id]
-  user_data = file("ansible.sh")
+  user_data = each.key == "Jenkins" ? file("jenkins.sh") : null
 
   tags = merge(
     var.common_tags,
     {
-        Name = "${var.project_name}-jenkins"
+        Name = "${var.project_name}-${each.key}"
     }
   )
 }
+
